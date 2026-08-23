@@ -34,7 +34,6 @@ export const GROUPS = [
         blurb: 'Getting things out of a database and back into one.',
         packages: [
             ['orm', 'ORM', 'Entities, relations, and a batching strategy that makes N+1 queries impossible.'],
-            ['query-builder', 'Query builder', 'SQL written as method calls, with the values kept out of the string.'],
             ['db', 'Database', 'The connection underneath, over PDO.'],
         ],
     },
