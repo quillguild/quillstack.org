@@ -4,6 +4,9 @@
 # whatever they said the last time somebody built, which is not a thing to keep in git.
 /docs/packages/*.md
 
+# One per package, so the addresses released packages carry keep working.
+/docs/public/*/index.html
+
 # VitePress leaves these wherever it is run from. A pattern with a slash inside it is anchored
 # to this file, so these need the `**` to match the copy under `docs/` as well.
 **/.vitepress/cache/

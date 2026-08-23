@@ -4,7 +4,7 @@
     "private": true,
     "type": "module",
     "scripts": {
-        "packages": "node scripts/build-packages.js && node scripts/build-index.js",
+        "packages": "node scripts/build-packages.js && node scripts/build-index.js && node scripts/build-redirects.js",
         "dev": "npm run packages && vitepress dev docs",
         "build": "npm run packages && vitepress build docs",
         "preview": "vitepress preview docs"
