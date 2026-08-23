@@ -1,0 +1,101 @@
+/**
+ * Quillstack, on the page.
+ *
+ * A documentation site is read, not admired, so the work here goes into the things that decide
+ * whether a page is easy to read: a measure that does not run away across a wide screen, code
+ * that is clearly code, and enough air between a heading and what it introduces to see where
+ * one section ends and the next begins.
+ */
+
+:root {
+    /* Teal carries the brand; it is dark enough for white text at every size a link appears in,
+       which a lighter accent would not be. */
+    --vp-c-brand-1: #0d9488;
+    --vp-c-brand-2: #0f766e;
+    --vp-c-brand-3: #14b8a6;
+    --vp-c-brand-soft: rgba(13, 148, 136, 0.14);
+
+    --vp-c-tip-1: var(--vp-c-brand-1);
+    --vp-c-tip-soft: var(--vp-c-brand-soft);
+
+    --vp-font-family-base: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI',
+        Roboto, 'Helvetica Neue', Arial, sans-serif;
+    --vp-font-family-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, 'SF Mono',
+        Menlo, Consolas, 'Liberation Mono', monospace;
+
+    --vp-layout-max-width: 1440px;
+    --vp-code-font-size: 0.875em;
+
+    --qs-measure: 46rem;
+}
+
+.dark {
+    --vp-c-brand-1: #2dd4bf;
+    --vp-c-brand-2: #14b8a6;
+    --vp-c-brand-3: #0d9488;
+    --vp-c-brand-soft: rgba(45, 212, 191, 0.16);
+
+    --vp-c-bg: #0e1116;
+    --vp-c-bg-alt: #0a0d11;
+    --vp-c-bg-soft: #161b22;
+}
+
+/* The home page: a plain statement rather than a gradient. */
+:root {
+    --vp-home-hero-name-color: transparent;
+    --vp-home-hero-name-background: linear-gradient(120deg, #0d9488 30%, #0369a1);
+    --vp-home-hero-image-background-image: linear-gradient(-45deg, #0d9488 40%, #0369a1 60%);
+    --vp-home-hero-image-filter: blur(56px);
+}
+
+.dark {
+    --vp-home-hero-name-background: linear-gradient(120deg, #2dd4bf 30%, #38bdf8);
+}
+
+/* Prose is read a line at a time, and a line that runs the width of a monitor is read twice.
+   Code is not prose and gets the full width it was given. */
+.vp-doc > div > p,
+.vp-doc > div > ul,
+.vp-doc > div > ol,
+.vp-doc > div > blockquote {
+    max-width: var(--qs-measure);
+}
+
+.vp-doc h2 {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--vp-c-divider);
+    letter-spacing: -0.01em;
+}
+
+.vp-doc h3 {
+    margin-top: 2rem;
+    letter-spacing: -0.01em;
+}
+
+.vp-doc p,
+.vp-doc li {
+    line-height: 1.75;
+}
+
+/* A sentence set in bold is the point of its paragraph; it should look deliberate. */
+.vp-doc strong {
+    color: var(--vp-c-text-1);
+    font-weight: 650;
+}
+
+.vp-doc div[class*='language-'] {
+    border-radius: 10px;
+    border: 1px solid var(--vp-c-divider);
+}
+
+.vp-doc :not(pre) > code {
+    background-color: var(--vp-c-brand-soft);
+    color: var(--vp-c-text-1);
+    font-weight: 500;
+}
+
+.vp-doc table {
+    display: table;
+    width: 100%;
+}
