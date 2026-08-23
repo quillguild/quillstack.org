@@ -70,6 +70,7 @@ export const GROUPS = [
             ['unit-tests', 'Unit tests', 'A test runner with no configuration to write.'],
             ['test-coverage', 'Test coverage', 'What the tests reached, and what they did not.'],
             ['benchmark', 'Benchmark', 'How long things take, measured rather than guessed.'],
+            ['standards', 'Standards', 'Checks a package against the shape every Quillstack package takes.'],
         ],
     },
 ];
