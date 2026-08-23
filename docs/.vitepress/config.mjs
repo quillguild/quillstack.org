@@ -47,8 +47,9 @@ export default defineConfig({
     ignoreDeadLinks: [/^https?:\/\/localhost(:\d+)?/],
 
     head: [
-        ['link', { rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' }],
-        ['meta', { name: 'theme-color', content: '#0f766e' }],
+        ['link', { rel: 'icon', href: '/favicon.png', type: 'image/png' }],
+        ['link', { rel: 'apple-touch-icon', href: '/logo.png' }],
+        ['meta', { name: 'theme-color', content: '#1b7cc0' }],
         ['meta', { property: 'og:type', content: 'website' }],
         ['meta', { property: 'og:title', content: 'Quillstack' }],
         ['meta', {
@@ -58,7 +59,7 @@ export default defineConfig({
     ],
 
     themeConfig: {
-        logo: '/favicon.svg',
+        logo: '/logo.png',
         siteTitle: 'Quillstack',
 
         nav: [

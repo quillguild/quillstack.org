@@ -8,12 +8,15 @@
  */
 
 :root {
-    /* Teal carries the brand; it is dark enough for white text at every size a link appears in,
-       which a lighter accent would not be. */
-    --vp-c-brand-1: #0d9488;
-    --vp-c-brand-2: #0f766e;
-    --vp-c-brand-3: #14b8a6;
-    --vp-c-brand-soft: rgba(13, 148, 136, 0.14);
+    /* The blue of the mark, sampled from it: the quill sits on #1779be through #2999d6, and
+       these are that range put to the two jobs a brand colour has — text that has to be read on
+       white, and a filled button that has to carry white text itself. */
+    --vp-c-brand-1: #1b6fa8;
+    --vp-c-brand-2: #17608f;
+    /* A shade under the mark's own #2285c6: VitePress fills its buttons with this and writes
+       white on them, and the mark's blue leaves that at 4:1 — under what a small label needs. */
+    --vp-c-brand-3: #1f7cb8;
+    --vp-c-brand-soft: rgba(34, 133, 198, 0.14);
 
     --vp-c-tip-1: var(--vp-c-brand-1);
     --vp-c-tip-soft: var(--vp-c-brand-soft);
@@ -30,10 +33,11 @@
 }
 
 .dark {
-    --vp-c-brand-1: #2dd4bf;
-    --vp-c-brand-2: #14b8a6;
-    --vp-c-brand-3: #0d9488;
-    --vp-c-brand-soft: rgba(45, 212, 191, 0.16);
+    /* Lighter on a dark ground, where the same blue would sink into it. */
+    --vp-c-brand-1: #57b0e4;
+    --vp-c-brand-2: #2999d6;
+    --vp-c-brand-3: #1f7cb8;
+    --vp-c-brand-soft: rgba(41, 153, 214, 0.18);
 
     --vp-c-bg: #0e1116;
     --vp-c-bg-alt: #0a0d11;
