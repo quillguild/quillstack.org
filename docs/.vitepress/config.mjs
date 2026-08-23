@@ -47,7 +47,23 @@ export default defineConfig({
     ignoreDeadLinks: [/^https?:\/\/localhost(:\d+)?/],
 
     head: [
-        ['link', { rel: 'icon', href: '/favicon.png', type: 'image/png' }],
+        // Two of them, because the mark is drawn twice: a dark quill for a light ground and a
+        // light one for a dark ground. A browser picks by the theme its own chrome is in, and a
+        // browser too old to know about `media` here takes the first and gets the light one.
+        ['link', {
+            rel: 'icon',
+            type: 'image/svg+xml',
+            href: '/logo-light.svg',
+            media: '(prefers-color-scheme: light)',
+        }],
+        ['link', {
+            rel: 'icon',
+            type: 'image/svg+xml',
+            href: '/logo-dark.svg',
+            media: '(prefers-color-scheme: dark)',
+        }],
+        // Opaque, because this one is drawn onto a home screen and cannot rely on what is
+        // behind it.
         ['link', { rel: 'apple-touch-icon', href: '/logo.png' }],
         ['meta', { name: 'theme-color', content: '#1b7cc0' }],
         ['meta', { property: 'og:type', content: 'website' }],
@@ -59,7 +75,7 @@ export default defineConfig({
     ],
 
     themeConfig: {
-        logo: '/logo.png',
+        logo: { light: '/logo-light.svg', dark: '/logo-dark.svg', alt: 'Quillstack' },
         siteTitle: 'Quillstack',
 
         nav: [
