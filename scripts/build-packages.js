@@ -54,12 +54,16 @@ function asPage(readme, pkg, meta) {
 
     const documented = new Set(ALL.map((p) => p.name));
 
-    const text = body
-        .join('\n')
-        // Headings inside a README start at ### to sit under its title; here they sit under the
-        // page title instead, so each one moves up a level and the sidebar reads properly.
-        .replace(/^####\s/gm, '### ')
-        .replace(/^###\s/gm, '## ')
+    // A README sits everything under its own `#` title, but not all of them agree on what
+    // level that leaves for the first real section: the older ones start at `###`, the newer at
+    // `##`. Promoting blindly flattened the newer ones, making a sub-section a sibling of the
+    // section it belonged to. So find where this README actually starts and move by that much.
+    const joined = body.join('\n');
+    const levels = [...joined.matchAll(/^(#{2,6})\s/gm)].map((m) => m[1].length);
+    const shift = levels.length === 0 ? 0 : Math.min(...levels) - 2;
+
+    const text = joined
+        .replace(/^(#{2,6})\s/gm, (whole, hashes) => '#'.repeat(hashes.length - shift) + ' ')
         // A README points at this site for the full documentation. This is that documentation,
         // so the sentence would send a reader to the page they are already reading.
         .replace(/\s*Full\n?\s*documentation:\s*https:\/\/quillstack\.org\/\S+/g, '')
