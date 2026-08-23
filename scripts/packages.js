@@ -46,6 +46,7 @@ export const GROUPS = [
             ['di', 'Container', 'PSR-11, built for speed: dependencies read once and remembered.'],
             ['config', 'Config', 'Settings, and where they are read from.'],
             ['dotenv', 'Dotenv', 'The environment file, parsed strictly.'],
+            ['dotenv-expand', 'Dotenv expand', 'Values built from other values, where an unknown name is an error rather than an empty string.'],
             ['events', 'Events', 'PSR-14 dispatching.'],
             ['cache', 'Cache', 'PSR-16, in an array or on disk.'],
             ['logger', 'Logger', 'PSR-3, with the message and its context kept apart.'],
