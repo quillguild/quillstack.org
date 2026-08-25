@@ -102,6 +102,14 @@ export const ALL = GROUPS.flatMap((group) =>
 // second language.
 export const PYTHON_GROUPS = [
     {
+        id: 'configuration',
+        title: 'Configuration',
+        blurb: 'What an application is told before it starts.',
+        packages: [
+            ['dotenv', 'Dotenv', 'A .env file, with the types kept and nothing expanded.'],
+        ],
+    },
+    {
         id: 'tooling',
         title: 'Tooling',
         blurb: 'What keeps a package the shape every Quillstack package takes.',

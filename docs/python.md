@@ -20,11 +20,16 @@ None of that is about PHP. It happens to have been written in PHP first.
 
 ## What already exists for Python
 
-One package, and the part that is language-neutral it was written to prove:
+Two packages, and the part that is language-neutral they were written to prove:
 
 - **[quillstack-standards](/python/packages/standards)** — the checker, on PyPI. It reads the
   same `rules.json` the PHP one reads, and both run the same conformance cases, so a rule cannot
   mean one thing in one language and something else in the other.
+- **[quillstack-dotenv](/python/packages/dotenv)** — a `.env` file with the types kept and
+  nothing expanded, which is the same decision
+  [quillstack/dotenv](/packages/dotenv) makes in PHP. The first package written with the checker
+  already standing: it passed the standard before its first commit, rather than being brought up
+  to it later.
 
 - **[quillstack/standards](https://github.com/quillstack/standards)** holds the shape a package
   takes as data rather than as prose. Seven of its nine rule sections are marked as belonging to
@@ -38,8 +43,8 @@ One package, and the part that is language-neutral it was written to prove:
 
 ## What does not exist
 
-Everything else. There is no framework, no skeleton, no router, no ORM. One checker is not a
-framework, and nothing on this site claims otherwise.
+Everything else. There is no framework, no skeleton, no router, no ORM. A checker and a `.env`
+reader are not a framework, and nothing on this site claims otherwise.
 
 ## Why it is being done tool-first
 
