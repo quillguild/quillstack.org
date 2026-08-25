@@ -51,6 +51,7 @@ export const GROUPS = [
             ['logger', 'Logger', 'PSR-3, with the message and its context kept apart.'],
             ['serializer', 'Serializer', 'What goes over the wire, said as what may rather than what may not.'],
             ['queue', 'Queue', 'Work handed to somebody else to do later.'],
+            ['queue-rabbitmq', 'Queue: RabbitMQ', 'The same queue, with a broker holding the messages.'],
             ['clock', 'Clock', 'PSR-20, so a test can say what time it is.'],
             ['datetime', 'Date and time', 'Dates that behave.'],
             ['parameter-bag', 'Parameter bag', 'A bag of values, asked politely.'],
