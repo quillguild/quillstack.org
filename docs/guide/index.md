@@ -1,12 +1,16 @@
 ---
 title: What Quillstack is
-description: A PHP framework as simple to use as it is strict about what it does.
+description: The PHP framework — simple to use, strict about what it does.
 ---
 
 # What Quillstack is
 
-Quillstack is a PHP framework for building APIs, made of thirty-four packages that each work on
-their own. It was written to answer a question its author kept running into: why does picking a
+**This is Quillstack for PHP.** The way of working is meant to outlast the language — see
+[Quillstack for Python](/python) for what that means and what exists of it so far — but
+everything on this page and everything under it is PHP.
+
+Quillstack is a framework for building APIs, made of thirty-six packages that each work on their
+own. It was written to answer a question its author kept running into: why does picking a
 framework mean picking between one that is pleasant to use and one that is rigorous about how it
 is built?
 
@@ -41,4 +45,4 @@ say — see [Versioning](/guide/versioning).
 
 - [Installation](/guide/installation) — a running application in three commands
 - [Your first route](/guide/routing) — how a request finds a controller
-- [Packages](/packages/) — all thirty-four, and what each is for
+- [Packages](/packages/) — all thirty-six, and what each is for

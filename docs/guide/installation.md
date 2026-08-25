@@ -68,4 +68,4 @@ composer require quillstack/http-client
 composer require quillstack/orm
 ```
 
-See [all thirty-four](/packages/).
+See [all thirty-six](/packages/).

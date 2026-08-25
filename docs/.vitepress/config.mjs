@@ -37,7 +37,7 @@ const guideSidebar = [
 
 export default defineConfig({
     title: 'Quillstack',
-    description: 'A PHP framework as simple to use as it is strict about what it does.',
+    description: 'One way to build an API, in the language you work in. Simple to use, strict about what it does.',
     lang: 'en',
     cleanUrls: true,
     lastUpdated: true,
@@ -70,7 +70,7 @@ export default defineConfig({
         ['meta', { property: 'og:title', content: 'Quillstack' }],
         ['meta', {
             property: 'og:description',
-            content: 'A PHP framework as simple to use as it is strict about what it does.',
+            content: 'One way to build an API, in the language you work in. Simple to use, strict about what it does.',
         }],
     ],
 
@@ -79,15 +79,21 @@ export default defineConfig({
         siteTitle: 'Quillstack',
 
         nav: [
-            { text: 'Guide', link: '/guide/', activeMatch: '/guide/' },
-            { text: 'Packages', link: '/packages/', activeMatch: '/packages/' },
+            // The language is named rather than assumed. Everything under /guide/ and
+            // /packages/ is the PHP framework; saying so where a reader can see it is what
+            // stops the Python one from arriving as a surprise.
             {
-                text: 'Links',
+                text: 'PHP',
                 items: [
-                    { text: 'GitHub', link: 'https://github.com/quillstack' },
+                    { text: 'Guide', link: '/guide/' },
+                    { text: 'Packages', link: '/packages/' },
                     { text: 'Packagist', link: 'https://packagist.org/packages/quillstack/' },
+                    { text: 'GitHub', link: 'https://github.com/quillstack' },
                 ],
             },
+            { text: 'Python', link: '/python', activeMatch: '/python' },
+            { text: 'Guide', link: '/guide/', activeMatch: '/guide/' },
+            { text: 'Packages', link: '/packages/', activeMatch: '/packages/' },
         ],
 
         sidebar: {
