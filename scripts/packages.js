@@ -74,6 +74,23 @@ export const GROUPS = [
     },
 ];
 
+// Packages which existed, were released, and are gone. They are deliberately not part of
+// `ALL`: nothing should list them as current. They are here so the build still writes a page
+// saying what happened, because an address somebody released is an address somebody holds.
+export const WITHDRAWN = [
+    {
+        name: 'query-builder',
+        title: 'Query builder',
+        instead: 'orm',
+        why: [
+            'It built SQL through separate `Model` and `Relation` classes. What it did is now part of',
+            '[quillstack/orm](/packages/orm), which reaches the database through the same query building',
+            'but loads relations by result set rather than one row at a time — so the N+1 problem the',
+            'query builder left to the caller cannot be written in the first place.',
+        ].join('\n'),
+    },
+];
+
 export const ALL = GROUPS.flatMap((group) =>
     group.packages.map(([name, title, blurb]) => ({ name, title, blurb, group: group.id }))
 );

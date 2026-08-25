@@ -7,7 +7,7 @@
 import { mkdir, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { ALL } from './packages.js';
+import { ALL, WITHDRAWN } from './packages.js';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const OUT = resolve(HERE, '../docs/packages');
@@ -124,7 +124,32 @@ async function one(pkg) {
     return { name: pkg.name, bytes: text.length };
 }
 
+function withdrawnPage(pkg) {
+    return [
+        '---',
+        `title: ${JSON.stringify(pkg.title)}`,
+        'description: "Withdrawn."',
+        'editLink: false',
+        '---',
+        '',
+        `# ${pkg.title}`,
+        '',
+        `**\`quillstack/${pkg.name}\` has been withdrawn, and its repository is gone.**`,
+        '',
+        pkg.why,
+        '',
+        `If you were using it, [quillstack/${pkg.instead}](/packages/${pkg.instead}) is where to go.`,
+        '',
+        'This page is kept so that links to it say what happened, rather than nothing.',
+        '',
+    ].join('\n');
+}
+
 await mkdir(OUT, { recursive: true });
+
+await Promise.all(
+    WITHDRAWN.map((pkg) => writeFile(resolve(OUT, `${pkg.name}.md`), withdrawnPage(pkg), 'utf8'))
+);
 
 const results = await Promise.allSettled(ALL.map(one));
 const failed = results
@@ -133,6 +158,7 @@ const failed = results
 
 const built = results.filter((r) => r.status === 'fulfilled').length;
 console.log(`  strony pakietow: ${built} z ${ALL.length}`);
+console.log(`  wycofane, ze strona wyjasniajaca: ${WITHDRAWN.length}`);
 
 if (failed.length) {
     // A page silently missing is a hole in the documentation nobody sees. This is a build.

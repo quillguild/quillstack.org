@@ -6,7 +6,7 @@
 import { mkdir, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { ALL } from './packages.js';
+import { ALL, WITHDRAWN } from './packages.js';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const OUT = resolve(HERE, '../docs/public');
@@ -27,10 +27,13 @@ const page = (name, title) => `<!doctype html>
 </html>
 `;
 
-for (const pkg of ALL) {
+// Withdrawn packages included: deleting the repository does not unpublish the versions on
+// Packagist which carry this address, so it has to go on answering — and what it now answers
+// with is the page saying the package is gone.
+for (const pkg of [...ALL, ...WITHDRAWN]) {
     const dir = resolve(OUT, pkg.name);
     await mkdir(dir, { recursive: true });
     await writeFile(resolve(dir, 'index.html'), page(pkg.name, pkg.title), 'utf8');
 }
 
-console.log(`  przekierowania ze starych adresow: ${ALL.length}`);
+console.log(`  przekierowania ze starych adresow: ${ALL.length + WITHDRAWN.length}`);
