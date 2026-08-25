@@ -27,9 +27,10 @@ const page = (name, title) => `<!doctype html>
 </html>
 `;
 
-// Withdrawn packages included: deleting the repository does not unpublish the versions on
-// Packagist which carry this address, so it has to go on answering — and what it now answers
-// with is the page saying the package is gone.
+// Withdrawn packages included. query-builder turned out to be gone from Packagist as well, so
+// nobody can install a version carrying this address any more — but the address is still in
+// old READMEs, in search results, and in whatever anybody wrote down, and answering it costs a
+// file. Where a package is only repo-deleted and stays published, this is not optional.
 for (const pkg of [...ALL, ...WITHDRAWN]) {
     const dir = resolve(OUT, pkg.name);
     await mkdir(dir, { recursive: true });
