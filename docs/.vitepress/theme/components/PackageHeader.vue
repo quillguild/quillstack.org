@@ -6,30 +6,43 @@
 const props = defineProps({
     name: { type: String, required: true },
     repo: { type: String, required: true },
+    // Which language this package is written in, and so which registry it comes from and what
+    // its version constraint is about. The default is PHP because that is what every package
+    // was until there were two.
+    language: { type: String, default: 'PHP' },
+    org: { type: String, default: 'quillstack' },
+    version: { type: String, default: '' },
     php: { type: String, default: '' },
     description: { type: String, default: '' },
 });
+
+const python = props.language === 'Python';
+const install = python ? `pip install ${props.name}` : `composer require ${props.name}`;
+const registry = python
+    ? { name: 'PyPI', url: `https://pypi.org/project/${props.name}/` }
+    : { name: 'Packagist', url: `https://packagist.org/packages/${props.name}` };
+const requires = props.version || props.php;
 </script>
 
 <template>
     <div class="package-header">
-        <code class="package-header__install">composer require {{ props.name }}</code>
+        <code class="package-header__install">{{ install }}</code>
 
         <div class="package-header__facts">
             <a
                 class="package-header__fact"
-                :href="`https://packagist.org/packages/${props.name}`"
+                :href="registry.url"
                 target="_blank"
                 rel="noreferrer"
-            >Packagist</a>
+            >{{ registry.name }}</a>
             <a
                 class="package-header__fact"
-                :href="`https://github.com/quillstack/${props.repo}`"
+                :href="`https://github.com/${props.org}/${props.repo}`"
                 target="_blank"
                 rel="noreferrer"
             >Source</a>
-            <span v-if="props.php" class="package-header__fact package-header__fact--quiet">
-                PHP {{ props.php }}
+            <span v-if="requires" class="package-header__fact package-header__fact--quiet">
+                {{ props.language }} {{ requires }}
             </span>
         </div>
     </div>

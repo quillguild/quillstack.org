@@ -1,10 +1,16 @@
 import { defineConfig } from 'vitepress';
-import { GROUPS } from '../../scripts/packages.js';
+import { GROUPS, PYTHON_GROUPS } from '../../scripts/packages.js';
 
 const packageSidebar = GROUPS.map((group) => ({
     text: group.title,
     collapsed: false,
     items: group.packages.map(([name, title]) => ({ text: title, link: `/packages/${name}` })),
+}));
+
+const pythonSidebar = PYTHON_GROUPS.map((group) => ({
+    text: group.title,
+    collapsed: false,
+    items: group.packages.map(([name, title]) => ({ text: title, link: `/python/packages/${name}` })),
 }));
 
 const guideSidebar = [
@@ -91,12 +97,21 @@ export default defineConfig({
                     { text: 'GitHub', link: 'https://github.com/quillstack' },
                 ],
             },
-            { text: 'Python', link: '/python', activeMatch: '/python' },
+            {
+                text: 'Python',
+                items: [
+                    { text: 'What exists', link: '/python' },
+                    { text: 'Packages', link: '/python/packages/standards' },
+                    { text: 'PyPI', link: 'https://pypi.org/search/?q=quillstack' },
+                    { text: 'GitHub', link: 'https://github.com/quillstack-py' },
+                ],
+            },
             { text: 'Guide', link: '/guide/', activeMatch: '/guide/' },
             { text: 'Packages', link: '/packages/', activeMatch: '/packages/' },
         ],
 
         sidebar: {
+            '/python/': [{ text: 'Quillstack for Python', link: '/python' }, ...pythonSidebar],
             '/guide/': guideSidebar,
             '/packages/': [{ text: 'All packages', link: '/packages/' }, ...packageSidebar],
         },

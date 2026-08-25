@@ -1,15 +1,18 @@
 {
-    "name": "quillstack.org",
-    "version": "2.0.0",
-    "private": true,
-    "type": "module",
-    "scripts": {
-        "packages": "node scripts/build-packages.js && node scripts/build-index.js && node scripts/build-redirects.js",
-        "dev": "npm run packages && vitepress dev docs",
-        "build": "npm run packages && vitepress build docs",
-        "preview": "vitepress preview docs"
-    },
-    "devDependencies": {
-        "vitepress": "^1.6.4"
-    }
+  "name": "quillstack.org",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "packages": "node scripts/build-packages.js && node scripts/build-python-packages.js && node scripts/build-index.js && node scripts/build-redirects.js",
+    "dev": "npm run packages && vitepress dev docs",
+    "build": "npm run packages && vitepress build docs",
+    "preview": "vitepress preview docs"
+  },
+  "devDependencies": {
+    "vitepress": "^1.6.4"
+  },
+  "dependencies": {
+    "smol-toml": "^1.8.0"
+  }
 }

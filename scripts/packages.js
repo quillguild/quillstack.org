@@ -95,3 +95,44 @@ export const WITHDRAWN = [
 export const ALL = GROUPS.flatMap((group) =>
     group.packages.map(([name, title, blurb]) => ({ name, title, blurb, group: group.id }))
 );
+
+// The Python side, which is being built to the same standard and is a great deal smaller. It
+// lives in its own organisation because one repository cannot carry two independent version
+// lines, and under its own addresses because `/packages/<name>` was PHP's before there was a
+// second language.
+export const PYTHON_GROUPS = [
+    {
+        id: 'tooling',
+        title: 'Tooling',
+        blurb: 'What keeps a package the shape every Quillstack package takes.',
+        packages: [
+            ['standards', 'Standards', 'Checks a package against the shape every one of them takes.'],
+        ],
+    },
+];
+
+export const PYTHON = PYTHON_GROUPS.flatMap((group) =>
+    group.packages.map(([name, title, blurb]) => ({ name, title, blurb, group: group.id }))
+);
+
+// What differs between the two, in one place, so the build reads it rather than knowing it.
+export const LANGUAGES = {
+    php: {
+        org: 'quillstack',
+        manifest: 'composer.json',
+        out: 'docs/packages',
+        prefix: '/packages',
+        packages: ALL,
+        groups: GROUPS,
+        installAs: (name) => `quillstack/${name}`,
+    },
+    python: {
+        org: 'quillstack-py',
+        manifest: 'pyproject.toml',
+        out: 'docs/python/packages',
+        prefix: '/python/packages',
+        packages: PYTHON,
+        groups: PYTHON_GROUPS,
+        installAs: (name) => `quillstack-${name}`,
+    },
+};

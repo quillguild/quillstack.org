@@ -3,6 +3,7 @@
 # Built by `npm run packages` from the READMEs of the package repositories: what is here is
 # whatever they said the last time somebody built, which is not a thing to keep in git.
 /docs/packages/*.md
+/docs/python/packages/*.md
 
 # One per package, so the addresses released packages carry keep working.
 /docs/public/*/index.html
